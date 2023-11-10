@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import './srk.css';
 
 function App() {
+  const [wordCount, setWordCount] = useState(0);
+
+  const handleTextAreaChange = (event) => {
+    const text = event.target.value;
+    const words = text.trim().split(/\s+/);
+    const filteredWords = words.filter((word) => word !== '');
+    setWordCount(filteredWords.length);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="container">
+      <h1 class="kal">Responsive page for word<br></br> counter</h1>
+      <textarea type='text' onChange={handleTextAreaChange} class="vas"></textarea>
+      <p class="p">Word Count: {wordCount}</p>
     </div>
   );
 }
